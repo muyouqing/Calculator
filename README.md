@@ -1,48 +1,34 @@
 
 # Calculator Service
-A Java-based calculator service that supports basic arithmetic operations such as addition, 
-subtraction, multiplication, division, and chaining multiple operations in sequence. And this 
-calculator allow new operations to be added in the future.
 
-##assumption
-assume this calculator only support BiOperator mode so far
-##design decision
-for added new operation, add new enum operation add new case into calculate function in CalculateServiceImp
+A Java-based calculator service that supports basic arithmetic operations such as addition, subtraction, multiplication, division, and chaining multiple operations in sequence. This calculator is designed to allow new operations to be added easily in the future.
 
-###TODO
-MonoOperator Mode
-Exposed endpoint to external environment
+## Assumptions
 
+- The calculator currently only supports **Bi-Operator Mode** (operations involving two operands, such as addition, subtraction, etc.).
 
-Prerequisites
+## Design Decisions
+- use Spring framework to implement IOC
+- To add a new operation:
+  1. Add a new `enum` value in the `Operation` enum.
+  2. Add a corresponding `case` in the `calculate()` function in `CalculateServiceImp`.
 
-Java 8 or above
-Maven 3.x
-How to Build
+## TODO
 
-Make sure you have Maven installed and properly set up. In the root directory of your project (where pom.xml is located), run:
+- **Mono-Operator Mode**: Implement support for operations that only require one operand (e.g., square root).
+- **Exposed Endpoints**: Create endpoints to expose the calculator service to external environments (e.g., REST API).
 
-bash
-Copy code
+## Prerequisites
+
+- **Java 8** or above
+- **Maven 3.x**
+
+## How to Build
+
+Make sure you have Maven installed and properly set up. In the root directory of your project (where `pom.xml` is located), run the following command to build the project:
+
+```bash
 mvn clean install
-This will clean the project, install dependencies, and build the project.
-
-How to Run
-
-After building the project, you can run the application with:
-
-bash
-Copy code
 mvn spring-boot:run
-Alternatively, you can run the CalculatorApplication class directly from your IDE as a Java application.
-
-How to Run Tests
-
-To execute the unit tests, run:
-
-bash
-Copy code
 mvn test
-This will run all JUnit 5 tests located in the src/test directory.
 
-# Calculator
